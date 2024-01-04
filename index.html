@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/style.css">
+    <title>Word Guessing Game</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Word Guessing Game</h1>
+    <p class="hint">Hello</p>
+    <input type="text" id="userInput" />
+    <button class="button" onclick="guessWord()">Submit</button>
+
+    </div>
+
+    <script>
+        // array of secret words
+        var secretWords = [
+        {"word": "Apple", "hint": "Fruit"},
+        {"word": "Dog", "hint": "Furry friend"},
+        {"word": "Circle", "hint": "Round shape"},
+        {"word": "Happy", "hint": "Feeling of joy"},
+        {"word": "Water", "hint": "Transparent liquid"},
+        {"word": "Jump", "hint": "Vertical motion"},
+        {"word": "Key", "hint": "Unlocks doors"},
+        {"word": "Cloud", "hint": "White fluffy in the sky"},
+        {"word": "Green", "hint": "Color of grass"},
+        {"word": "Song", "hint": "Musical composition"},
+        {"word": "Laugh", "hint": "Expression of amusement"},
+        {"word": "Car", "hint": "Automobile"},
+        {"word": "Moon", "hint": "Natural satellite"},
+        {"word": "Sleep", "hint": "Resting state"},
+        {"word": "Star", "hint": "Shining in the night sky"},
+        {"word": "Read", "hint": "Interpret written words"},
+        {"word": "Sunset", "hint": "Evening sky"},
+        {"word": "Warm", "hint": "Opposite of cold"},
+        {"word": "Run", "hint": "Move swiftly on foot"},
+        {"word": "Smile", "hint": "Facial expression of happiness"}
+      ]
+
+      const secWord = secretWords[Math.floor(Math.random()*secretWords.length)];
+      document.querySelector('.hint').innerHTML = `Hint: ${secWord.hint}`
+
+      console.log(secWord)
+      
+        function guessWord() {
+            var userInput = document.getElementById('userInput').value;
+            userInput = userInput.charAt(0).toUpperCase() + userInput.slice(1);
+            console.log(userInput)
+
+            // check if input is empty or less than 6 characters
+            if (userInput.trim() === "") {
+                alert("Please enter a valid word!");
+                return;
+            }
+
+            // compare user input with secret words
+            if (userInput == secWord.word) {
+                alert("Right answer!");
+            } else {
+                // display a hint if the guess is incorrect
+                alert("Wrong answer. Please try again.");
+            }
+        }
+    </script>
+</body>
+</html>
